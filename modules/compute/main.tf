@@ -6,7 +6,7 @@ resource "aws_instance" "web-server" {
     key_name = "web-server"
     user_data = filebase64("install_apache.sh")
     availability_zone = "ap-southeast-1a"
-    security_groups = var.security_groups_web_server
+    security_groups = [var.security_groups_web_server]
     subnet_id = var.public_subnet_id
     tags = {
       "Name" = "Web-server"
