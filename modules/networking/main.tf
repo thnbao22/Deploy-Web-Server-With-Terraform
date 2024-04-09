@@ -37,5 +37,56 @@ resource "aws_route" "public_route" {
 }
 
 resource "aws_route_table_association" "public" {
-  
+  subnet_id = aws_subnet.public_subnet.id
+  route_table_id = aws_route.public_route.id
+}
+
+# Define local values for port
+locals {
+  # HTTP
+  port_in_80    = [
+    80
+  ]
+  # SSH
+  port_in_22    = [
+    22
+  ]
+  # HTTPS
+  port_in_443   = [  
+    443
+  ]
+}
+
+# SG for Web Server
+resource "aws_security_group" "web_server_sg" {
+ name = "Public Security Group"
+ description = "Allow Web inbound traffic"
+ vpc_id = aws_vpc.prod.id
+ dynamic "ingress" {
+   for_each = toset(local.port_in_22)
+   content {
+     from_port = ingress.value
+     to_port = ingress.value
+     protocol = "tcp"
+     cidr_blocks = ["0.0.0.0/0"]
+   }
+ }
+ dynamic "ingress" {
+   for_each = toset(local.port_in_80)
+   content {
+     from_port = ingress.value
+     to_port = ingress.value
+     protocol = "tcp"
+     cidr_blocks = ["0.0.0.0/0"]
+   }
+ }
+ dynamic "ingress" {
+   for_each = toset(local.port_in_443)
+   content {
+     from_port = ingress.value
+     to_port = ingress.value
+     protocol = "tcp"
+     cidr_blocks = ["0.0.0.0/0"]
+   }
+ }
 }
