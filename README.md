@@ -15,4 +15,13 @@ terraform init
 ```
 Remmember to cd to folder terraform :v
 
+![ConnectPrivate](images/14.png)
+
+
+
+After run the command **terrform init** successfully, you can run the following command
+```
+terraform plan
+```
+
 ![ConnectPrivate](images/1.png)
