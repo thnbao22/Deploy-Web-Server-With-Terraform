@@ -3,7 +3,7 @@ resource "aws_instance" "web-server" {
     ami = "ami-0fd77db8c27ba5cc5"
     # we use t2.micro
     instance_type = "t2.micro"
-    key_name = "###"
+    key_name = "web-server"
     user_data = <<-EOF
                 #!/bin/bash
                 yum update -y
