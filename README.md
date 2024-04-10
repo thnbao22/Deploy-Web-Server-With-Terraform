@@ -1,6 +1,6 @@
 # Deploy-Web-Server-With-Terraform
 
-# Demo Project
+## Demo Project
 
 First, you need to create an access/ secret key on AWS Management Console for this project and after you complete this project, you must delete you access key immediately
 
