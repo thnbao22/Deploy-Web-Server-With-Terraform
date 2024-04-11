@@ -71,7 +71,7 @@ terraform apply --auto-approve
 
 ![ConnectPrivate](images/12.png)
 
-- Apache Web server:
+- Check the Apache Web server by using public IPv4 address of EC2 instance:
 
 ![ConnectPrivate](images/13.png)
 
